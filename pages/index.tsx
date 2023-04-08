@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
-  return null;
+  return (
+    <div className="bg-red-500">
+      <h1 className="text-black">it works</h1>
+    </div>
+  );
 }
