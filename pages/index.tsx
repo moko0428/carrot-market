@@ -3,25 +3,35 @@ import type { NextPage } from "next";
 const Home: NextPage = () => {
   return (
     <div className="bg-slate-400 py-20 px-20 grid gap-10 min-h-screen">
-      <div className="bg-white p-6 rounded-2xl shadow-xl">
-        <span className="font-semibold text-3xl">Select Item</span>
-        <div className="flex justify-between">
-          <span className="text-gray-500 my-2">Grey Chair</span>
-          <span className="font-semibold ">$19</span>
-        </div>
-        <div className="flex justify-between">
-          <span className="text-gray-500">Tooly Table</span>
-          <span className="font-semibold ">$19</span>
-        </div>
+      <div className="bg-white p-6 rounded-3xl shadow-xl">
+        <span className="font-semibold text-2xl">Select Item</span>
+        <ul>
+          {[1, 2, 3, 4, 5].map((i) => (
+            <div
+              key={i}
+              className="flex justify-between my-2 odd:bg-blue-50 even:bg-yellow-500"
+            >
+              <span className="text-gray-500">Grey Chair</span>
+              <span className="font-semibold ">$19</span>
+            </div>
+          ))}
+        </ul>
+        <ul>
+          {["a", "b", "c", ""].map((c, i) => (
+            <li className="bg-red-500 py-2 empty:hidden" key={i}>
+              {c}
+            </li>
+          ))}
+        </ul>
         <div className="flex justify-between mt-2 pt-2 border-t-2 border-dashed border-l-0 border-r-0 border-b-0 border-gray-300">
           <span>Total</span>
           <span className="font-semibold ">$10</span>
         </div>
-        <div className="mt-5 bg-blue-500 text-white p-3 text-center rounded-xl w-2/4 mx-auto">
+        <button className="mt-5 bg-blue-500 text-white p-3 text-center rounded-xl w-3/4 mx-auto hover:bg-teal-500 hover:text-black active:bg-yellow-500 focus:text-red-500">
           Checkout
-        </div>
+        </button>
       </div>
-      <div className="bg-white overflow-hidden rounded-2xl shadow-xl">
+      <div className="bg-white overflow-hidden rounded-2xl shadow-xl group">
         <div className="bg-blue-500 p-6 pb-14">
           <span className="text-white text-2xl ">Profile</span>
         </div>
@@ -31,7 +41,7 @@ const Home: NextPage = () => {
               <span className="text-sm text-gray-500">Orders</span>
               <span className="font-medium">340</span>
             </div>
-            <div className="h-24 w-24 bg-red-400 rounded-full" />
+            <div className="h-24 w-24 bg-gray-400 rounded-full group-hover:bg-red-300 transition-colors" />
             <div className="flex flex-col items-center">
               <span className="text-sm text-gray-500">Spent</span>
               <span className="font-medium">$2,310</span>
@@ -73,10 +83,10 @@ const Home: NextPage = () => {
           <span className="font-medium  text-xl">Swoon Lounge</span>
           <span className="text-xs text-gray-500">Chair</span>
           <div className="mt-3 mb-5 flex justify-between items-center">
-            <div>
-              <input type="radio" />
-              <input type="radio" />
-              <input type="radio" />
+            <div className="space-x-2">
+              <button className="w-5 h-5 rounded-full border-none bg-yellow-500 bg-opacity-50 focus:ring-2 ring-offset-2 ring-yellow-500 transition" />
+              <button className="w-5 h-5 rounded-full border-none bg-indigo-500 bg-opacity-50 focus:ring-2 ring-offset-2 ring-indigo-500 transition" />
+              <button className="w-5 h-5 rounded-full border-none bg-teal-500 bg-opacity-50 focus:ring-2 ring-offset-2 ring-teal-500 transition" />
             </div>
             <div className="flex items-center space-x-5">
               <button className="p-1.5 rounded-lg bg-blue-200 flex justify-center items-center aspect-square w-8 font-medium text-xl text-gray-500">
@@ -96,6 +106,21 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
+      <form className="flex flex-col space-y-2 p-5">
+        <input
+          type="text"
+          required
+          placeholder="Username"
+          className="border p-1 peer border-gray-400 rounded-md"
+        />
+        <span className="hidden peer-invalid:block peer-invalid:text-red-500 ">
+          This input is invalid
+        </span>
+        <span className="hidden peer-valid:block peer-valid:text-teal-500 ">
+          Awesome username
+        </span>
+        <input type="submit" value="Login" className="bg-white" />
+      </form>
     </div>
   );
 };
