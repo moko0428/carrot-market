@@ -1,5 +1,7 @@
 import type { NextPage } from "next";
 import Enter from "./enter";
+import ItemDetail from "./items/[id]";
+import Upload from "./items/upload";
 
 const Home: NextPage = () => {
   return (
