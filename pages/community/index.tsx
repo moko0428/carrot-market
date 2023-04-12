@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import CommunityPostDetail from "./[id]";
 
 const Community: NextPage = () => {
   return (
@@ -16,7 +17,7 @@ const Community: NextPage = () => {
             <span>준영</span>
             <span>18시간 전</span>
           </div>
-          <div className="flex space-x-5 mt-3 text-gray-700 py-2.5 border-t border-b-[2px] w-full">
+          <div className="flex px-4 space-x-5 mt-3 text-gray-700 py-2.5 border-t border-b-[2px] w-full">
             <span className="flex spx2 items-center text-sm">
               <svg
                 className="w-4 h-4"
