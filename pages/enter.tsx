@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { cls } from "../libs/client/utils";
-import Input from "../components/input";
-import Button from "../components/button";
+
 import { NextPage } from "next";
 import { useForm } from "react-hook-form";
 import { forEachTrailingCommentRange } from "typescript";
-import useMutation from "../libs/client/useMutation";
+import useMutation from "@libs/client/useMutation";
+import { cls } from "@libs/client/utils";
+import Input from "@components/input";
+import Button from "@components/button";
 
 interface EnterForm {
   email?: string;
