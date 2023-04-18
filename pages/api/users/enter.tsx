@@ -27,28 +27,31 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   });
   console.log(token);
   if (email) {
-    const mailOptions = {
-      from: process.env.MAIL_ID,
-      to: email,
-      subject: "Carrot Authentication Email",
-      text: `Authentication Code : ${payload}`,
-    };
-    const result = await smtpTransport.sendMail(
-      mailOptions,
-      (error, responses) => {
-        if (error) {
-          console.log(error);
-          return null;
-        } else {
-          console.log(responses);
-          return null;
-        }
-      }
-    );
-    smtpTransport.close();
-    console.log(result);
+    // const mailOptions = {
+    //   from: process.env.MAIL_ID,
+    //   to: email,
+    //   subject: "Carrot Authentication Email",
+    //   text: `Authentication Code : ${payload}`,
+    // };
+    // const result = await smtpTransport.sendMail(
+    //   mailOptions,
+    //   (error, responses) => {
+    //     if (error) {
+    //       console.log(error);
+    //       return null;
+    //     } else {
+    //       console.log(responses);
+    //       return null;
+    //     }
+    // //   }
+    // );
+    // smtpTransport.close();
+    // console.log(result);
   }
-  return res.status(200).end();
+  return res.json({
+    ok: true,
+  });
+  // return res.status(200).end();
 }
 
 export default withHandler("POST", handler);
