@@ -25,7 +25,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       },
     },
   });
-  console.log(token);
+  console.log(payload);
   if (email) {
     // const mailOptions = {
     //   from: process.env.MAIL_ID,
