@@ -26,6 +26,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     },
   });
   console.log(payload);
+  if (phone) {
+    console.log(payload);
+  }
   if (email) {
     // const mailOptions = {
     //   from: process.env.MAIL_ID,
