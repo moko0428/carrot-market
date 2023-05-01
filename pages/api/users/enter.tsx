@@ -6,8 +6,9 @@ import smtpTransport from "@libs/server/email";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { phone, email } = req.body;
-  const user = phone ? { phone } : email ? { email } : null;
-  if (!user) return res.status(400).json({ ok: false });
+  // const user = phone ? { phone } : email ? { email } : null;
+  const user = phone ? { phone: +phone } : { email };
+  // if (!user) return res.status(400).json({ ok: false });
   const payload = Math.floor(100000 + Math.random() * 900000) + "";
   const token = await client.token.create({
     data: {
@@ -25,36 +26,36 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       },
     },
   });
-  console.log(payload);
-  if (phone) {
-    console.log(payload);
-  }
-  if (email) {
-    // const mailOptions = {
-    //   from: process.env.MAIL_ID,
-    //   to: email,
-    //   subject: "Carrot Authentication Email",
-    //   text: `Authentication Code : ${payload}`,
-    // };
-    // const result = await smtpTransport.sendMail(
-    //   mailOptions,
-    //   (error, responses) => {
-    //     if (error) {
-    //       console.log(error);
-    //       return null;
-    //     } else {
-    //       console.log(responses);
-    //       return null;
-    //     }
-    // //   }
-    // );
-    // smtpTransport.close();
-    // console.log(result);
-  }
-  return res.json({
-    ok: true,
-  });
-  // return res.status(200).end();
+  console.log(token);
+  // if (phone) {
+  //   console.log(payload);
+  // }
+  // if (email) {
+  //   const mailOptions = {
+  //     from: process.env.MAIL_ID,
+  //     to: email,
+  //     subject: "Carrot Authentication Email",
+  //     text: `Authentication Code : ${payload}`,
+  //   };
+  //   const result = await smtpTransport.sendMail(
+  //     mailOptions,
+  //     (error, responses) => {
+  //       if (error) {
+  //         console.log(error);
+  //         return null;
+  //       } else {
+  //         console.log(responses);
+  //         return null;
+  //       }
+  //     }
+  //   );
+  //   smtpTransport.close();
+  //   console.log(result);
+  // }
+  // return res.json({
+  //   ok: true,
+  // });
+  return res.status(200).end();
 }
 
 export default withHandler({ method: "POST", handler, isPrivate: false });

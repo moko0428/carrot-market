@@ -14,6 +14,7 @@ async function handler(
     },
   });
   if (!foundToken) return res.status(404).end();
+  console.log(foundToken);
   req.session.user = {
     id: foundToken.userId,
   };
