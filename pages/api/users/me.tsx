@@ -8,6 +8,7 @@ async function handler(
   res: NextApiResponse<ResponseType>
 ) {
   const profile = await client.user.findUnique({
+    //api/users/me url에서 user의 객체를 확인할 수 있다.
     where: {
       id: req.session.user?.id,
     },
