@@ -4,6 +4,7 @@ export interface ResponseType {
   ok: boolean;
   [key: string]: any;
 }
+
 interface ConfigType {
   method: "GET" | "POST" | "DELETE";
   handler: (req: NextApiRequest, res: NextApiResponse) => void;
