@@ -19,6 +19,7 @@
     "eslint-config-next": "13.3.0",
     "iron-session": "^6.3.1",
     "next": "13.3.0",
+    "next-auth": "^4.22.1",
     "nodemailer": "^6.9.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -30,7 +31,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
-    "prisma": "^4.12.0",
+    "prisma": "^4.13.0",
     "tailwindcss": "^3.3.1"
   }
 }
