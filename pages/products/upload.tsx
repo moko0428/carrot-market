@@ -30,7 +30,7 @@ const Upload: NextPage = () => {
   };
   useEffect(() => {
     if (data?.ok) {
-      router.replace(`/products/${data.product.id}`);
+      router.push(`/products/${data.product.id}`);
     }
   }, [data, router]);
   return (
@@ -72,9 +72,9 @@ const Upload: NextPage = () => {
         />
         <TextArea
           register={register("description", { required: true })}
+          required
           name="description"
           label="Description"
-          required
         />
         <Button text={loading ? "Loading..." : "Upload item"} />
       </form>
