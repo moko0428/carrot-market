@@ -15,7 +15,7 @@ interface UploadProductForm {
   description: string;
 }
 
-interface UploadProductMutaion {
+interface UploadProductMutation {
   ok: boolean;
   product: Product;
 }
@@ -23,9 +23,9 @@ const Upload: NextPage = () => {
   const router = useRouter();
   const { register, handleSubmit } = useForm<UploadProductForm>();
   const [uploadProduct, { loading, data }] =
-    useMutation<UploadProductMutaion>("api/products");
+    useMutation<UploadProductMutation>("/api/products");
   const onValid = (data: UploadProductForm) => {
-    if (!loading) return;
+    if (loading) return;
     uploadProduct(data);
   };
   useEffect(() => {

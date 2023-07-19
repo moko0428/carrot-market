@@ -5,8 +5,6 @@ import Button from "../../components/button";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import { Product, User } from "@prisma/client";
-import { BooleanLiteral } from "typescript";
-import products from "pages/api/products";
 
 interface ProductWithUser extends Product {
   user: User;
