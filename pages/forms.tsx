@@ -47,7 +47,7 @@ export default function Forms() {
           required: "Email is required",
           validate: {
             notGmail: (value) =>
-              !value.includes("@gmail.com") || "Gmail 쓰지마셈",
+              !value.includes("@gmail.com") || "Gmail은 사용이 불가합니다.",
           },
         })}
         type="email"
