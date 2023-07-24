@@ -7,16 +7,24 @@ async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseType>
 ) {
-  const profile = await client.user.findUnique({
-    //api/users/me url에서 user의 객체를 확인할 수 있다.
+  const {
+    session: { user },
+  } = req;
+  const reviews = await client.review.findMany({
     where: {
-      id: req.session.user?.id,
+      createdForId: user?.id,
     },
+    include: { createdBy: { select: { id: true, name: true, avatar: true } } },
   });
   res.json({
     ok: true,
-    profile,
+    reviews,
   });
 }
 
-export default withApiSession(withHandler({ methods: ["GET"], handler }));
+export default withApiSession(
+  withHandler({
+    methods: ["GET"],
+    handler,
+  })
+);
