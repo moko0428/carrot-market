@@ -1,20 +1,23 @@
 import React from "react";
 import Link from "next/link";
-import { cls } from "../libs/client/utils";
+import { cls } from "@libs/client/utils";
 import { useRouter } from "next/router";
-import { spawn } from "child_process";
+import Head from "next/head";
 
 interface LayoutProps {
   title?: string;
   canGoBack?: boolean;
   hasTabBar?: boolean;
   children: React.ReactNode;
+  seoTitle?: string;
 }
+
 export default function Layout({
   title,
   canGoBack,
   hasTabBar,
   children,
+  seoTitle,
 }: LayoutProps) {
   const router = useRouter();
   const onClick = () => {
@@ -22,7 +25,10 @@ export default function Layout({
   };
   return (
     <div>
-      <div className="bg-white w-full h-12 max-wxl justify-center text-lg px-10 font-medium fixed text-gray-800 border-b top-0 flex items-center">
+      <Head>
+        <title>{seoTitle} | Carrot Market</title>
+      </Head>
+      <div className="bg-white w-full h-12 max-w-xl justify-center text-lg px-10 font-medium  fixed text-gray-800 border-b top-0  flex items-center">
         {canGoBack ? (
           <button onClick={onClick} className="absolute left-4">
             <svg
@@ -44,14 +50,14 @@ export default function Layout({
         {title ? (
           <span className={cls(canGoBack ? "mx-auto" : "", "")}>{title}</span>
         ) : null}
-      </div>{" "}
+      </div>
       <div className={cls("pt-12", hasTabBar ? "pb-24" : "")}>{children}</div>
       {hasTabBar ? (
-        <nav className="bg-white max-w-xl  text-gray-700 border-t fixed bottom-0 w-full px-10 pb-5 pt-3 flex justify-between text-xs">
+        <nav className="bg-white max-w-xl text-gray-700 border-t fixed bottom-0 w-full px-10 pb-5 pt-3 flex justify-between text-xs">
           <Link legacyBehavior href="/">
             <a
               className={cls(
-                "flex flex-col items-center space-y-2",
+                "flex flex-col items-center space-y-2 ",
                 router.pathname === "/"
                   ? "text-orange-500"
                   : "hover:text-gray-500 transition-colors"
@@ -77,7 +83,7 @@ export default function Layout({
           <Link legacyBehavior href="/community">
             <a
               className={cls(
-                "flex flex-col items-center space-y-2",
+                "flex flex-col items-center space-y-2 ",
                 router.pathname === "/community"
                   ? "text-orange-500"
                   : "hover:text-gray-500 transition-colors"
@@ -103,7 +109,7 @@ export default function Layout({
           <Link legacyBehavior href="/chats">
             <a
               className={cls(
-                "flex flex-col items-center space-y-2",
+                "flex flex-col items-center space-y-2 ",
                 router.pathname === "/chats"
                   ? "text-orange-500"
                   : "hover:text-gray-500 transition-colors"
@@ -126,11 +132,11 @@ export default function Layout({
               <span>채팅</span>
             </a>
           </Link>
-          <Link legacyBehavior href="/live">
+          <Link legacyBehavior href="/streams">
             <a
               className={cls(
                 "flex flex-col items-center space-y-2 ",
-                router.pathname === "/live"
+                router.pathname === "/streams"
                   ? "text-orange-500"
                   : "hover:text-gray-500 transition-colors"
               )}
